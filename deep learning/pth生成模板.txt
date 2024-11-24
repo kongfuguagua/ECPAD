@@ -1,0 +1,95 @@
+from torch import nn
+import torch
+import numpy as np
+import matplotlib.pyplot as plt
+from torch.utils.data import DataLoader
+from torchvision import datasets, transforms
+
+
+class SimpleCNN(nn.Module):
+    def __init__(self):
+        super(SimpleCNN, self).__init__()  # b 16,28,28深度、长、宽
+        layer1 = nn.Sequential()
+        layer1.add_module("conv1", nn.Conv2d(1, 16, 3))  # b 32 26 26深度、长、宽
+        layer1.add_module("norm1",
+                          nn.BatchNorm2d(16))  # 卷积层之后总会添加BatchNorm2d进行数据的归一化处理，这使得数据在进行Relu之前不会因为数据过大而导致网络性能的不稳定。
+        layer1.add_module("relu1", nn.ReLU(True))
+        self.layer1 = layer1
+
+        layer2 = nn.Sequential()
+        layer2.add_module("conv2", nn.Conv2d(16, 32, 3))  # b 32 24 24深度、长、宽
+        layer2.add_module("norm2", nn.BatchNorm2d(32))
+        layer2.add_module("relu2", nn.ReLU(True))
+        layer2.add_module("pool2", nn.MaxPool2d(2, 2))  # b 32 12 12 深度、长、宽
+        self.layer2 = layer2
+
+        layer5 = nn.Sequential()
+        layer5.add_module("fc1", nn.Linear(32 * 12 * 12, 1024))  # 128*4*4=2048
+        layer5.add_module("fc_relu1", nn.ReLU(True))
+        layer5.add_module("fc2", nn.Linear(1024, 128))
+        layer5.add_module("fc_relu2", nn.ReLU(True))
+        layer5.add_module("fc3", nn.Linear(128, 10))
+        self.layer5 = layer5
+
+    def forward(self, input_x):
+        conv1 = self.layer1(input_x)
+        conv2 = self.layer2(conv1)
+        fc_input = conv2.view(conv2.size(0), -1)  # 高维数据 ‘压’成 低维数据
+        fc_out = self.layer5(fc_input)  # 全连接层(低维数据)
+        return fc_out
+
+
+batch_size = 64
+learning_rate = 1e-2
+epoch = 0
+num_epochs = 100
+DEVICE = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+# DEVICE = 'cpu'
+
+data_tf = transforms.Compose([transforms.ToTensor(), transforms.Normalize([0.5], [0.5])])
+train_dataset = datasets.MNIST(root="./data", train=True, transform=data_tf, download=False)
+test_dataset = datasets.MNIST(root="./data", train=False, transform=data_tf)
+# 1.root指定数据集的路径，2.train设置该数据是否用来训练，3.download参数用来设置是否下载该数据集默认False
+# 4.transform在pytorch封装了许多图像处理的方法，如填充(Pad)，Resize，CenterCrop(中心裁剪)，Grayscale(灰度图)，
+# 而这里的ToTensor是常用的步骤，可以实现将PIL格式或者numpy.ndarray格式的输入转化为tensor数据类型
+train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+# DataLoader的意义就是做数据打包，参数含义重点关注这几个
+# 首先的1. dataset用来指定传入的数据集，2. batch_size用来指定多少个数据为一组(如=64代表一次传入64张图片)，太大可能爆显存，
+# 3. shuffle用来设置是否随机采样(可以理解为图片顺序打乱？)，
+# 4. num_workers代表任务数量(理解为线程数)，5. drop_last设置是否丢弃最后的图片(当最后几张图片不满一个batch_size时丢弃)
+
+model = SimpleCNN().to(DEVICE)
+criterion = nn.CrossEntropyLoss().to(DEVICE)
+opt = torch.optim.Adam(model.parameters(), lr=learning_rate)
+
+while 1:
+    epoch += 1
+    model.train()
+    for i, (images, labels) in enumerate(train_loader):
+        images = images.to(DEVICE)  # 图片大小为28*28,为什么不用Variable(images.view(-1, 28*28))？因为这是卷积神经网络，不用把图片以行或列向量输入模型
+        labels = labels.to(DEVICE)
+        opt.zero_grad()  # zero the gradient buffer
+        outputs = model(images)
+        loss = criterion(outputs, labels)
+        loss.backward()
+        opt.step()
+        if (i + 1) % 100 == 0:
+            print('Epoch [%d/%d], Step [%d/%d], Loss: %.4f'
+                  % (
+                  epoch + 1, num_epochs, i + 1, len(train_dataset) // batch_size, loss.item()))  # .item()是返回数值Float32
+
+    model.eval()
+    n_correct = 0
+    total = 0
+    with torch.no_grad():
+        for _, (t_img, t_label) in enumerate(test_loader):
+            t_img, t_label = t_img.to(DEVICE), t_label.to(DEVICE)
+            class_output = model(t_img)
+            _, predicted = torch.max(class_output.data, 1)
+            total += t_label.size(0)  # 计算所有的label数量
+            n_correct += (predicted == t_label.squeeze(-1)).sum()  # 计算预测对的label数量
+    print('Accuracy of the network on the %d test images: %d %%' % (total, (100 * torch.true_divide(n_correct, total))))
+    if 100 * torch.true_divide(n_correct, total) >= 98:
+        torch.save(model, 'model.pth')
+        break

@@ -1,0 +1,6 @@
+客户端容器：
+客户端socket的ip和port不需要设定，socket会自动选择。服务器端的ip和port需要知道。但pod的ip随着生命周期的结束而重新分配，所以需要service进行固定。即service的ip不会变（因为不会重启service），service绑定pod的标签，使得pod即使重启也会和service的ip绑定。
+综上，客户端目标的ip和端口设置成service的ip和暴露的端口即可。
+
+服务端容器：
+服务端socket的ip和port需要设定，其中ip为pod的ip，在容器的deployment.yaml文件中，注入环境变量即可。port也在deployment暴露即可。服务器端不涉及pod重启ip变换的问题，因为服务器内的程序和ip是绑定的，容器消失程序自然无法运行。

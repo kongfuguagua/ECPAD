@@ -1,0 +1,2 @@
+http://www.steves-internet-guide.com/mosquitto-bridge-configuration/
+https://www.cnblogs.com/zhenqichai/p/mosquitto-bridge-configuration.html
