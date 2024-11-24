@@ -57,7 +57,7 @@ This project is based on secondary development of k8s and deployment of componen
 本项目为自建实验平台，研究微服务编排算法，涉及到的应用包含真实场景和虚拟场景，而微服务化较为简单，socket为主要IPC手段，后续考虑使用API-RPC进行重构（视实验室和开源需求而定）。微服务镜像由于众所周知的原因不提供，可以根据需要自行build。具体步骤参考下面，祝大家科研顺利！！！
 <p align="center">
   <a href="https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/">
-    <img src="device.png" alt="Logo" width="80" height="80">
+    <img src="device.png">
   </a>
   </p>
 </p>
