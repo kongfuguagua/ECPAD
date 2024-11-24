@@ -17,7 +17,7 @@ This project is based on secondary development of k8s and deployment of componen
 <br />
 
 <p align="center">
-  <a href="https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/">
+  <a href="https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/image.jpg">
     <img src="image.jpg" alt="Logo" width="80" height="80">
   </a>
 
@@ -219,6 +219,20 @@ ECPAD
 
 
 ### Demo 
+
+一个光伏领域的预测性维护应用框图如下：
+
+<p align="center">
+  <a href="https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/energy.png">
+    <img src="energy.png">
+  </a>
+  <a href="https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/diagram.png">
+    <img src="diagram.png">
+  </a>
+  </p>
+</p>
+
+涉及模块均可以在MicroserviceLibrary找到，主要包括Redis、Consul、PV*、MQTT、Sensors
 
 
 
