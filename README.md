@@ -285,7 +285,7 @@ a25505597703@gmail.com
 [license-shield]: https://img.shields.io/github/license/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design?style=flat-square
 [license-url]: https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/shaojintian
+[linkedin-url]: https://linkedin.com/in/kongfuguagua
 
 
 
