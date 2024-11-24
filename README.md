@@ -17,7 +17,7 @@ This project is based on secondary development of k8s and deployment of componen
 <br />
 
 <p align="center">
-  <a href="https://github.com/kongfuguagua/ECPAD/image.jpg">
+  <a href="https://github.com/kongfuguagua/ECPAD/blob/main/image.jpg">
     <img src="image.jpg" alt="Logo" width="80" height="80">
   </a>
 
@@ -223,10 +223,10 @@ ECPAD
 一个光伏领域的预测性维护应用框图如下：
 
 <p align="center">
-  <a href="https://github.com/kongfuguagua/ECPAD/energy.png">
+  <a href="https://github.com/kongfuguagua/ECPAD/blob/main/energy.png">
     <img src="energy.png">
   </a>
-  <a href="https://github.com/kongfuguagua/ECPAD/diagram.png">
+  <a href="https://github.com/kongfuguagua/ECPAD/blob/main/diagram.png">
     <img src="diagram.png">
   </a>
   </p>
