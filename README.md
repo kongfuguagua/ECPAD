@@ -21,9 +21,9 @@ This project is based on secondary development of k8s and deployment of componen
     <img src="image.jpg" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">一个边缘计算demo</h3>
+  <h3 align="center">ECPAD</h3>
   <p align="center">
-    一个边缘计算demo去快速开始你的项目！
+    云(私有云)-边(Nano)-端(树莓派)架构
     <br />
     <a href="https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design"><strong>探索本项目的文档 »</strong></a>
     <br />
@@ -57,7 +57,7 @@ This project is based on secondary development of k8s and deployment of componen
 
 ### 上手指南
 
-请将所有链接中的“shaojintian/Best_README_template”改为“your_github_name/your_repository”
+请将所有链接中的“kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design”改为“your_github_name/your_repository”
 
 
 
@@ -72,7 +72,7 @@ This project is based on secondary development of k8s and deployment of componen
 2. Clone the repo
 
 ```sh
-git clone https://github.com/shaojintian/Best_README_template.git
+git clone https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design.git
 ```
 
 ### 文件目录说明
@@ -104,7 +104,7 @@ filetree
 
 ### 开发的架构 
 
-请阅读[ARCHITECTURE.md](https://github.com/shaojintian/Best_README_template/blob/master/ARCHITECTURE.md) 查阅为该项目的架构。
+请阅读[ARCHITECTURE.md](https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/blob/master/ARCHITECTURE.md) 查阅为该项目的架构。
 
 ### 部署
 
@@ -139,15 +139,13 @@ filetree
 
 ### 作者
 
-xxx@xxxx
-
-知乎:xxxx  &ensp; qq:xxxxxx    
+a25505597703@gmail.com  
 
  *您也可以在贡献者名单中参看所有参与该项目的开发者。*
 
 ### 版权说明
 
-该项目签署了MIT 授权许可，详情请参阅 [LICENSE.txt](https://github.com/shaojintian/Best_README_template/blob/master/LICENSE.txt)
+该项目签署了MIT 授权许可，详情请参阅 [LICENSE.txt](https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/blob/master/LICENSE.txt)
 
 ### 鸣谢
 
@@ -157,14 +155,13 @@ xxx@xxxx
 - [Choose an Open Source License](https://choosealicense.com)
 - [GitHub Pages](https://pages.github.com)
 - [Animate.css](https://daneden.github.io/animate.css)
-- [xxxxxxxxxxxxxx](https://connoratherton.com/loaders)
 
 <!-- links -->
 [your-project-path]:kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design
 [contributors-shield]: https://img.shields.io/github/contributors/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design?style=flat-square
-[contributors-url]: https://github.com/shaojintian/Best_README_template/graphs/contributors
+[contributors-url]: https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design?style=flat-square
-[forks-url]: https://github.com/shaojintian/Best_README_template/network/members
+[forks-url]: https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/network/members
 [stars-shield]: https://img.shields.io/github/stars/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design?style=flat-square
 [stars-url]: https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/stargazers
 [issues-shield]: https://img.shields.io/github/issues/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design?style=flat-square
