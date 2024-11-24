@@ -46,8 +46,7 @@ This project is based on secondary development of k8s and deployment of componen
   - [开发前的配置要求](#开发前的配置要求)
   - [安装步骤](#安装步骤)
 - [文件目录说明](#文件目录说明)
-- [开发的架构](#开发的架构)
-- [部署](#部署)
+- [Demo](#Demo)
 - [使用到的框架](#使用到的框架)
 - [贡献者](#贡献者)
   - [如何参与开源项目](#如何参与开源项目)
@@ -63,52 +62,161 @@ This project is based on secondary development of k8s and deployment of componen
 
 ###### 开发前的配置要求
 
-1. xxxxx x.x.x
-2. xxxxx x.x.x
+1. python3.10
+2. golang1.22
+3. 树莓派操作系统bullseye
+4. Nano操作系统ubuntu18.04(nvidia官方只支持这个版本)
+5. 群晖NAS(作为nfs和私有镜像仓库)
 
 ###### **安装步骤**
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
 
 ```sh
 git clone https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design.git
 ```
 
+2. Build the images 
+
+```sh
+cd ApplicationLibrary/xxx
+docker build -t --platform=linux/arm64 image_name:image_tag .
+```
+
+3. Deployment the application
+
+```sh
+cd Deployment
+kubectl create xxx.yaml -n xxx
+```
+
 ### 文件目录说明
 eg:
+ApplicationLibrary：各种应用(mnist检测、pv智能光伏、test文本处理、PLC-传感器、资源浪费和通信延时检测等)的源代码
+
+MicroserviceLibrary：微服务化的应用和Dockerfile
+
+Deployment：应用的部署yaml文件
+
+k8s Raspberry Pi/Nano：边缘侧K8s配置教程
+
+k8s scheduler：二开调度器教程和demo
+
 
 ```
-filetree 
-├── ARCHITECTURE.md
-├── LICENSE.txt
-├── README.md
-├── /account/
-├── /bbs/
-├── /docs/
-│  ├── /rules/
-│  │  ├── backend.txt
-│  │  └── frontend.txt
-├── manage.py
-├── /oa/
-├── /static/
-├── /templates/
-├── useless.md
-└── /util/
-
+ECPAD 
+├─ApplicationLibrary
+│  ├─cross-compile-PLC
+│  │  ├─project
+│  │  ├─st_transition
+│  │  └─utils
+│  ├─mini_PLC
+│  ├─mnist
+│  │  ├─mnist-input
+│  │  └─mnist-output
+│  ├─mnist-TCP
+│  │  ├─mnist-infer
+│  │  ├─mnist-input
+│  │  └─mnist-output
+│  ├─mpu6050
+│  ├─MQTT
+│  │  ├─cpu_ram_occupation
+│  │  ├─mnist-MQTT
+│  │  ├─pv-MQTT
+│  │  │  ├─mqtt-pv-infer
+│  │  │  ├─mqtt-pv-input
+│  │  │  └─mqtt-pv-output
+│  │  ├─stresser-MQTT
+│  │  └─text-MQTT
+│  │      ├─mqtt-text-input
+│  │      ├─mqtt-text-output
+│  │      ├─mqtt-text-sort
+│  │      └─mqtt-text-stats
+│  ├─mqtt-mnist
+│  │  ├─mqtt-cnn-mnist-infer
+│  │  ├─mqtt-mnist-infer
+│  │  ├─mqtt-mnist-input
+│  │  └─mqtt-mnist-output
+│  ├─pv
+│  │  ├─mqtt-pv-infer
+│  │  ├─mqtt-pv-input
+│  │  └─mqtt-pv-output
+│  ├─resource underutilization
+│  ├─sensors
+│  │  ├─8266myql_demo
+│  │  ├─http_demo
+│  │  ├─myql_demo
+│  │  ├─shine_demo
+│  │  └─time_demo
+│  └─text
+│      ├─mqtt-text-input
+│      ├─mqtt-text-output
+│      ├─mqtt-text-sort
+│      └─mqtt-text-stats
+├─deep learning
+├─Deployment
+│  ├─consul
+│  └─nfs
+├─Help
+│  ├─docker start
+│  │  ├─docker swarm
+│  │  ├─mnist-infer
+│  │  ├─mnist-input
+│  │  └─mnist-output
+│  ├─image debug
+│  ├─k8s调试文件
+│  └─MQTT开发
+│      ├─mqtt
+│      ├─mqtt-mnist-image
+│      │  ├─mqtt-cnn-mnist-infer
+│      │  ├─mqtt-mnist-infer
+│      │  ├─mqtt-mnist-input
+│      │  └─mqtt-mnist-output
+│      └─src_mqtt
+├─k8s nvidia nano
+├─k8s Raspberry Pi
+├─k8s scheduler
+│  ├─nodename_demo
+│  ├─promethues-filter-score-demo
+│  └─promethues_score_demo
+├─MicroserviceLibrary
+│  ├─Example
+│  │  ├─base_example
+│  │  ├─pv_example_3_ms
+│  │  └─string_example_3_ms
+│  ├─grafana
+│  ├─mnist
+│  │  ├─mnist-infer
+│  │  ├─mnist-input
+│  │  └─mnist-output
+│  ├─mqtt2redis
+│  ├─pv
+│  │  ├─mqtt-pv-infer
+│  │  ├─mqtt-pv-input
+│  │  └─mqtt-pv-output
+│  ├─pv_datasource
+│  ├─pv_infer
+│  ├─text
+│  │  ├─mqtt-text-input
+│  │  ├─mqtt-text-output
+│  │  ├─mqtt-text-sort
+│  │  └─mqtt-text-stats
+│  └─资源浪费程序
+├─Monitoring
+├─Registration
+│  └─consultest
+│      ├─requestservice
+│      └─testservice
+└─Storage
 ```
 
 
 
 
 
-### 开发的架构 
+### Demo 
 
 请阅读[ARCHITECTURE.md](https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/blob/master/ARCHITECTURE.md) 查阅为该项目的架构。
-
-### 部署
-
-暂无
 
 ### 使用到的框架
 
