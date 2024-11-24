@@ -17,7 +17,7 @@ This project is based on secondary development of k8s and deployment of componen
 <br />
 
 <p align="center">
-  <a href="https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/image.jpg">
+  <a href="https://github.com/kongfuguagua/ECPAD/image.jpg">
     <img src="image.jpg" alt="Logo" width="80" height="80">
   </a>
 
@@ -25,14 +25,14 @@ This project is based on secondary development of k8s and deployment of componen
   <p align="center">
     云(私有云)-边(Nano)-端(树莓派)架构
     <br />
-    <a href="https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design"><strong>探索本项目的文档 »</strong></a>
+    <a href="https://github.com/kongfuguagua/ECPAD"><strong>探索本项目的文档 »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design">查看Demo</a>
+    <a href="https://github.com/kongfuguagua/ECPAD">查看Demo</a>
     ·
-    <a href="https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/issues">报告Bug</a>
+    <a href="https://github.com/kongfuguagua/ECPAD/issues">报告Bug</a>
     ·
-    <a href="https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/issues">提出新特性</a>
+    <a href="https://github.com/kongfuguagua/ECPAD/issues">提出新特性</a>
   </p>
 
 </p>
@@ -56,7 +56,7 @@ This project is based on secondary development of k8s and deployment of componen
 
 本项目为自建实验平台，研究微服务编排算法，涉及到的应用包含真实场景和虚拟场景，而微服务化较为简单，socket为主要IPC手段，后续考虑使用API-RPC进行重构（视实验室和开源需求而定）。微服务镜像由于众所周知的原因不提供，可以根据需要自行build。具体步骤参考下面，祝大家科研顺利！！！
 <p align="center">
-  <a href="https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/">
+  <a href="https://github.com/kongfuguagua/ECPAD/">
     <img src="device.png">
   </a>
   </p>
@@ -76,7 +76,7 @@ This project is based on secondary development of k8s and deployment of componen
 1. Clone the repo
 
 ```sh
-git clone https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design.git
+git clone https://github.com/kongfuguagua/ECPAD.git
 ```
 
 2. Build the images 
@@ -223,10 +223,10 @@ ECPAD
 一个光伏领域的预测性维护应用框图如下：
 
 <p align="center">
-  <a href="https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/energy.png">
+  <a href="https://github.com/kongfuguagua/ECPAD/energy.png">
     <img src="energy.png">
   </a>
-  <a href="https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/diagram.png">
+  <a href="https://github.com/kongfuguagua/ECPAD/diagram.png">
     <img src="diagram.png">
   </a>
   </p>
@@ -261,7 +261,7 @@ a25505597703@gmail.com
 
 ### 版权说明
 
-该项目签署了MIT 授权许可，详情请参阅 [LICENSE.txt](https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/blob/master/LICENSE.txt)
+该项目签署了MIT 授权许可，详情请参阅 [LICENSE.txt](https://github.com/kongfuguagua/ECPAD/blob/master/LICENSE.txt)
 
 ### 鸣谢
 
@@ -273,17 +273,17 @@ a25505597703@gmail.com
 - [Animate.css](https://daneden.github.io/animate.css)
 
 <!-- links -->
-[your-project-path]:kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design
-[contributors-shield]: https://img.shields.io/github/contributors/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design?style=flat-square
-[contributors-url]: https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design?style=flat-square
-[forks-url]: https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/network/members
-[stars-shield]: https://img.shields.io/github/stars/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design?style=flat-square
-[stars-url]: https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/stargazers
-[issues-shield]: https://img.shields.io/github/issues/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design?style=flat-square
-[issues-url]: https://img.shields.io/github/issues/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design
-[license-shield]: https://img.shields.io/github/license/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design?style=flat-square
-[license-url]: https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/blob/master/LICENSE.txt
+[your-project-path]:kongfuguagua/ECPAD
+[contributors-shield]: https://img.shields.io/github/contributors/kongfuguagua/ECPAD?style=flat-square
+[contributors-url]: https://github.com/kongfuguagua/ECPAD/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/kongfuguagua/ECPAD?style=flat-square
+[forks-url]: https://github.com/kongfuguagua/ECPAD/network/members
+[stars-shield]: https://img.shields.io/github/stars/kongfuguagua/ECPAD?style=flat-square
+[stars-url]: https://github.com/kongfuguagua/ECPAD/stargazers
+[issues-shield]: https://img.shields.io/github/issues/kongfuguagua/ECPAD?style=flat-square
+[issues-url]: https://img.shields.io/github/issues/kongfuguagua/ECPAD
+[license-shield]: https://img.shields.io/github/license/kongfuguagua/ECPAD?style=flat-square
+[license-url]: https://github.com/kongfuguagua/ECPAD/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/kongfuguagua
 
