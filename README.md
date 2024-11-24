@@ -48,16 +48,19 @@ This project is based on secondary development of k8s and deployment of componen
 - [文件目录说明](#文件目录说明)
 - [Demo](#Demo)
 - [使用到的框架](#使用到的框架)
-- [贡献者](#贡献者)
-  - [如何参与开源项目](#如何参与开源项目)
 - [版本控制](#版本控制)
 - [作者](#作者)
 - [鸣谢](#鸣谢)
 
 ### 上手指南
 
-请将所有链接中的“kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design”改为“your_github_name/your_repository”
-
+本项目为自建实验平台，研究微服务编排算法，涉及到的应用包含真实场景和虚拟场景，而微服务化较为简单，socket为主要IPC手段，后续考虑使用API-RPC进行重构（视实验室和开源需求而定）。微服务镜像由于众所周知的原因不提供，可以根据需要自行build。具体步骤参考下面，祝大家科研顺利！！！
+<p align="center">
+  <a href="https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/">
+    <img src="device.png" alt="Logo" width="80" height="80">
+  </a>
+  </p>
+</p>
 
 
 ###### 开发前的配置要求
@@ -92,13 +95,14 @@ kubectl create xxx.yaml -n xxx
 
 ### 文件目录说明
 eg:
-ApplicationLibrary：各种应用(mnist检测、pv智能光伏、test文本处理、PLC-传感器、资源浪费和通信延时检测等)的源代码
+
+ApplicationLibrary：各种应用(mnist检测、pv智能光伏、test文本处理、PLC-传感器和通信延时检测等)源代码
 
 MicroserviceLibrary：微服务化的应用和Dockerfile
 
 Deployment：应用的部署yaml文件
 
-k8s Raspberry Pi/Nano：边缘侧K8s配置教程
+k8s Raspberry Pi/Nano：边缘侧K8s配置教程，主要针对ARM
 
 k8s scheduler：二开调度器教程和demo
 
@@ -216,17 +220,13 @@ ECPAD
 
 ### Demo 
 
-请阅读[ARCHITECTURE.md](https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/blob/master/ARCHITECTURE.md) 查阅为该项目的架构。
+
 
 ### 使用到的框架
 
-- [xxxxxxx](https://getbootstrap.com)
-- [xxxxxxx](https://jquery.com)
-- [xxxxxxx](https://laravel.com)
+- [OpenPLC](https://openplcproject.gitlab.io/)
+- [Domain-driven design](https://en.wikipedia.org/wiki/Domain-driven_design)
 
-### 贡献者
-
-请阅读**CONTRIBUTING.md** 查阅为该项目做出贡献的开发者。
 
 #### 如何参与开源项目
 
@@ -240,16 +240,10 @@ ECPAD
 5. Open a Pull Request
 
 
-
-### 版本控制
-
-该项目使用Git进行版本管理。您可以在repository参看当前可用版本。
-
 ### 作者
 
 a25505597703@gmail.com  
 
- *您也可以在贡献者名单中参看所有参与该项目的开发者。*
 
 ### 版权说明
 
