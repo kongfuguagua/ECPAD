@@ -1,0 +1,23 @@
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: consul
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-volume-consul-0
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain  # 或者根据需要设置为 Recycle 或 Delete
+  storageClassName: consul  # 只有当 PVC 需要引用这个存储类时才需要此字段，PV 本身不需要
+  hostPath:
+    path: "/consul/data"

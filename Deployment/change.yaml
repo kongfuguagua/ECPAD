@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mnistinfer
+    env: inference
+  name: mnistinfer-1
+spec:
+  selector:
+    matchLabels:
+      app: mnistinfer
+      env: inference
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mnistinfer
+        env: inference
+    spec:
+      containers:
+      - image: registry.cn-hangzhou.aliyuncs.com/mnist-infer/cnn-mnist-infer:t0.1.1
+        name: mnistinfer-dome1
+        ports:
+        - containerPort: 1900
+        command: [ "/bin/sh", "-c", "env" ]
+        env:
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        command: ["sleep"]
+        args: ["infinity"]

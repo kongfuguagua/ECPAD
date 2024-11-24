@@ -1,0 +1,75 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pvinput
+  name: pvinput-1
+spec:
+  selector:
+    matchLabels:
+      app: pvinput
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pvinput
+    spec:
+      containers:
+      - image: registry.cn-hangzhou.aliyuncs.com/photovotaic/mqtt-pv-input:v0.1.0
+        name: pvinput-dome1
+        ports:
+        - containerPort: 1883
+        command: ["python","main.py"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pvinfer
+    env: inference
+  name: pvinfer-1
+spec:
+  selector:
+    matchLabels:
+      app: pvinfer
+      env: inference
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pvinfer
+        env: inference
+    spec:
+      containers:
+      - image: registry.cn-hangzhou.aliyuncs.com/photovotaic/mqtt-pv-infer:v0.0.1
+        name: pvinfer-dome1
+        ports:
+        - containerPort: 1883
+        command: ["python","main.py"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pvoutput
+    env: output
+  name: pvoutput-1
+spec:
+  selector:
+    matchLabels:
+      app: pvoutput
+      env: output
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pvoutput
+        env: output
+    spec:
+      containers:
+      - image: registry.cn-hangzhou.aliyuncs.com/photovotaic/mqtt-pv-output:v0.0.1
+        name: pvoutput-dome1
+        ports:
+        - containerPort: 1883
+        command: ["python","main.py"]

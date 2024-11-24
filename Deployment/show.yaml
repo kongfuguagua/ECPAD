@@ -1,0 +1,110 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: inference
+spec:
+  ports:
+  - port: 1900
+    targetPort: 1900
+    name: inputserver
+  selector:
+    env: inference
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: output
+spec:
+  ports:
+  - port: 1800
+    targetPort: 1800
+    name: outputserver
+  selector:
+    env: output
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mnistinput
+  name: mnistinput-1
+spec:
+  selector:
+    matchLabels:
+      app: mnistinput
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mnistinput
+    spec:
+      containers:
+      - image:  registry.cn-hangzhou.aliyuncs.com/mnist-infer/mnist-infer-datacollect:v3.0.1
+        name: mnistinput-dome1
+        command: ["python","main.py"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mnistinfer
+    env: inference
+  name: mnistinfer-1
+spec:
+  selector:
+    matchLabels:
+      app: mnistinfer
+      env: inference
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mnistinfer
+        env: inference
+    spec:
+      containers:
+      - image:  registry.cn-hangzhou.aliyuncs.com/mnist-infer/mnist-infer-inferservice:v3.0.1
+        name: mnistinfer-dome1
+        ports:
+        - containerPort: 1900
+        command: [ "/bin/sh", "-c", "env" ]
+        env:
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        command: ["sleep"]
+        args: ["infinity"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mnistoutput
+    env: output
+  name: mnistoutput-1
+spec:
+  selector:
+    matchLabels:
+      app: mnistoutput
+      env: output
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mnistoutput
+        env: output
+    spec:
+      containers:
+      - image:  registry.cn-hangzhou.aliyuncs.com/mnist-infer/mnist-infer-conduct:v3.0.1
+        name: mnistoutput-dome1
+        ports:
+        - containerPort: 1800
+        command: [ "/bin/sh", "-c", "env" ]
+        env:
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        command: ["python","main.py"]

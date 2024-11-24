@@ -1,0 +1,132 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bridge-conf
+data:
+  mosquitto_master.conf: |
+    listener 1883
+    allow_anonymous true
+    persistence_location /mosquitto/data
+    log_dest file /mosquitto/log/mosquitto.log
+    connection broker2
+    address   10.105.84.33
+    topic # both 0
+
+    connection broker3
+    address   10.103.55.148
+    topic # both 0
+  mosquitto.conf: |
+    listener 1883
+    allow_anonymous true
+    persistence_location /mosquitto/data
+    log_dest file /mosquitto/log/mosquitto.log
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vol-mosquitto-1
+    #  namespace: mqtt
+  labels:
+    place: piworknode001
+spec:
+  selector:
+    matchLabels:
+      place: piworknode001
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        place: piworknode001
+    spec:
+      nodeName: piworknode001
+      containers:
+        - name: mosquitto
+          image: eclipse-mosquitto
+          ports:
+            - containerPort: 1883
+          volumeMounts:
+            - name: vol-mosquitto
+              mountPath: /mosquitto/config # 容器的数据目录
+          command:
+            - mosquitto
+          args:
+            - -c
+            - /mosquitto/config/mosquitto_master.conf
+      volumes:   # volumes和container处于同一层级，别搞错了
+        - name:  vol-mosquitto
+          configMap:
+            name: bridge-conf
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vol-mosquitto-2
+    #  namespace: mqtt
+  labels:
+    place: piworknode002
+spec:
+  selector:
+    matchLabels:
+      place: piworknode002
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        place: piworknode002
+    spec:
+      nodeName: piworknode002
+      containers:
+        - name: mosquitto
+          image: eclipse-mosquitto
+          ports:
+            - containerPort: 1883
+          volumeMounts:
+            - name: vol-mosquitto
+              mountPath: /mosquitto/config # 容器的数据目录
+          command:
+            - mosquitto
+          args:
+            - -c
+            - /mosquitto/config/mosquitto.conf
+      volumes:   # volumes和container处于同一层级，别搞错了
+        - name:  vol-mosquitto
+          configMap:
+            name: bridge-conf
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vol-mosquitto-3
+    #  namespace: mqtt
+  labels:
+    place: piworknode003
+spec:
+  selector:
+    matchLabels:
+      place: piworknode003
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        place: piworknode003
+    spec:
+      nodeName: piworknode003
+      containers:
+        - name: mosquitto
+          image: eclipse-mosquitto
+          ports:
+            - containerPort: 1883
+          volumeMounts:
+            - name: vol-mosquitto
+              mountPath: /mosquitto/config # 容器的数据目录
+          command:
+            - mosquitto
+          args:
+            - -c
+            - /mosquitto/config/mosquitto.conf
+      volumes:   # volumes和container处于同一层级，别搞错了
+        - name:  vol-mosquitto
+          configMap:
+            name: bridge-conf
+---

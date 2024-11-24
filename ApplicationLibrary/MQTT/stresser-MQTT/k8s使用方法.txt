@@ -1,0 +1,2 @@
+sudo ctr run --rm -t --net-host registry.cn-hangzhou.aliyuncs.com/mnist-infer/mqtt-stress:v0.1.0 mqtt-stress /bin/mqtt-stresser -broker tcp://10.111.241.167:1883 -num-clients 10 -num-messages 150 -rampup-delay 1s -rampup-size 10 -global-timeout 180s -timeout 20s
+sudo docker run -it --rm kongfuguagua/mqtt_stresser:v0.1.0 -broker tcp://172.17.0.1:1883 -num-clients 10 -num-messages 150 -rampup-delay 1s -rampup-size 10 -global-timeout 180s -timeout 20s

@@ -1,0 +1,38 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mqttbroker001
+spec:
+  ports:
+  - port: 1883 
+    targetPort: 1883 
+    name: inputserver
+  selector:
+    place: piworknode001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mqttbroker002
+spec:
+  type: NodePort
+  ports:
+  - port: 1883
+    targetPort: 1883
+    nodePort: 30000
+    name: inputserver
+  selector:
+    place: piworknode002
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mqttbroker003
+spec:
+  ports:
+  - port: 1883
+    targetPort: 1883
+    name: inputserver
+  selector:
+    place: piworknode003

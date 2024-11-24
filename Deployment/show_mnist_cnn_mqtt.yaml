@@ -1,0 +1,76 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mnistinput
+  name: mnistinput-1
+spec:
+  selector:
+    matchLabels:
+      app: mnistinput
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mnistinput
+    spec:
+      containers:
+      - image:  registry.cn-hangzhou.aliyuncs.com/mnist-infer/mqtt-mnist-input:v1.0.0
+        name: mnistinput-dome1
+        ports:
+        - containerPort: 1883
+        command: ["python","main.py"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mnistinfer
+    env: inference
+  name: mnistinfer-1
+spec:
+  selector:
+    matchLabels:
+      app: mnistinfer
+      env: inference
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mnistinfer
+        env: inference
+    spec:
+      containers:
+      - image:  registry.cn-hangzhou.aliyuncs.com/mnist-infer/cnn-mnist-infer:v1.1.0
+        name: mnistinfer-dome1
+        ports:
+        - containerPort: 1883
+        command: ["python","main.py"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mnistoutput
+    env: output
+  name: mnistoutput-1
+spec:
+  selector:
+    matchLabels:
+      app: mnistoutput
+      env: output
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mnistoutput
+        env: output
+    spec:
+      containers:
+      - image:  registry.cn-hangzhou.aliyuncs.com/mnist-infer/mqtt-mnist-output:v1.0.0
+        name: mnistoutput-dome1
+        ports:
+        - containerPort: 1883
+        command: ["sleep"]
+        args: ["infinity"]

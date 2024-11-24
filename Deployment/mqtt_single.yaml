@@ -1,0 +1,71 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: iiip-mqttbroker001
+spec:
+  ports:
+  - port: 1883
+    targetPort: 1883
+    name: inputserver
+  selector:
+    utils: mqttbroker
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bridge-conf
+data:
+  mosquitto_master.conf: |
+    listener 1883
+    allow_anonymous true
+    persistence_location /mosquitto/data
+    log_dest file /mosquitto/log/mosquitto.log
+    connection broker2
+    address   10.105.84.33
+    topic # both 0
+
+    connection broker3
+    address   10.103.55.148
+    topic # both 0
+  mosquitto.conf: |
+    listener 1883
+    allow_anonymous true
+    persistence_location /mosquitto/data
+    log_dest file /mosquitto/log/mosquitto.log
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vol-mosquitto-1
+    #  namespace: mqtt
+  labels:
+    utils: mqttbroker
+spec:
+  selector:
+    matchLabels:
+      utils: mqttbroker
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        utils: mqttbroker
+    spec:
+      #nodeName: piworknode001
+      containers:
+        - name: mosquitto
+          image: eclipse-mosquitto
+          ports:
+            - containerPort: 1883
+          volumeMounts:
+            - name: vol-mosquitto
+              mountPath: /mosquitto/config # 容器的数据目录
+          command:
+            - mosquitto
+          args:
+            - -c
+            - /mosquitto/config/mosquitto.conf
+      volumes:   # volumes和container处于同一层级，别搞错了
+        - name:  vol-mosquitto
+          configMap:
+            name: bridge-conf

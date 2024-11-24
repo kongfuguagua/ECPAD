@@ -1,0 +1,9 @@
+image: 
+  repository: registry.cn-hangzhou.aliyuncs.com/k-prometheus/nfs
+  tag: v4.0.18
+nfs:
+  server: 192.168.3.64    #指定 NFS 服务器的地址
+  path: /volume4/iiip          #指定 NFS 导出的共享数据目录
+storageClass:
+  defaultClass: true     #是否设置为默认的 StorageClass，本示例没设置，有需要的可以设置为 true
+  name: nfs-sc            #指定 storageClass 的名字

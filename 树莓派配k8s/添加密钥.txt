@@ -1,8 +1,0 @@
-加密钥
-curl -s URL | sudo gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/NAME.gpg --import
-授权用户
-sudo chown _apt /etc/apt/trusted.gpg.d/NAME.gpg
-如换阿里源
-curl -s https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/apt-key.gpg --import
-
-sudo chown _apt /etc/apt/trusted.gpg.d/apt-key.gpg
