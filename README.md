@@ -1,8 +1,8 @@
 
 
-# ProjectName
+# Edge-Computing-Based-Flexible-Production-Line-Architecture-Design
 
-ProjectName and Description
+This project is based on secondary development of k8s and deployment of components such as redis, mysql, consul, and Prometheus. The purpose is to deploy and orchestrate applications on the edge side, and to develop and deploy algorithms for industrial applications based on the MQTT protocol.
 
 <!-- PROJECT SHIELDS -->
 
@@ -160,17 +160,17 @@ xxx@xxxx
 - [xxxxxxxxxxxxxx](https://connoratherton.com/loaders)
 
 <!-- links -->
-[your-project-path]:shaojintian/Best_README_template
-[contributors-shield]: https://img.shields.io/github/contributors/shaojintian/Best_README_template.svg?style=flat-square
+[your-project-path]:kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design
+[contributors-shield]: https://img.shields.io/github/contributors/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design?style=flat-square
 [contributors-url]: https://github.com/shaojintian/Best_README_template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/shaojintian/Best_README_template.svg?style=flat-square
+[forks-shield]: https://img.shields.io/github/forks/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design?style=flat-square
 [forks-url]: https://github.com/shaojintian/Best_README_template/network/members
-[stars-shield]: https://img.shields.io/github/stars/shaojintian/Best_README_template.svg?style=flat-square
-[stars-url]: https://github.com/shaojintian/Best_README_template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/shaojintian/Best_README_template.svg?style=flat-square
-[issues-url]: https://img.shields.io/github/issues/shaojintian/Best_README_template.svg
-[license-shield]: https://img.shields.io/github/license/shaojintian/Best_README_template.svg?style=flat-square
-[license-url]: https://github.com/shaojintian/Best_README_template/blob/master/LICENSE.txt
+[stars-shield]: https://img.shields.io/github/stars/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design?style=flat-square
+[stars-url]: https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/stargazers
+[issues-shield]: https://img.shields.io/github/issues/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design?style=flat-square
+[issues-url]: https://img.shields.io/github/issues/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design
+[license-shield]: https://img.shields.io/github/license/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design?style=flat-square
+[license-url]: https://github.com/kongfuguagua/Edge-Computing-Based-Flexible-Production-Line-Architecture-Design/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/shaojintian
 
